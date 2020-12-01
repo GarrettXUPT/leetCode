@@ -7,7 +7,7 @@
 
 using namespace std;
 
-// �ַ�ת����
+// 字符转数字
 map<int, char> mapTrans() {
 	map<int, char> numMap;
 	numMap.insert(make_pair(1, 'A'));
@@ -26,7 +26,7 @@ map<int, char> mapTrans() {
 	return numMap;
 }
 
-// ����ת�ַ�
+// 数字转字符
 int charTransToInt(map<int, char> mapVec, const char ch) {
 	auto begin = mapVec.begin();
 	while (begin != mapVec.end()) {
@@ -37,6 +37,7 @@ int charTransToInt(map<int, char> mapVec, const char ch) {
 	}
 }
 
+// 将输入的数组进行全排列
 vector<vector<int> > permutation(vector<int> nums) {
 	vector<vector<int> > retVec;
 	retVec.push_back(nums);
@@ -45,14 +46,18 @@ vector<vector<int> > permutation(vector<int> nums) {
 	while (1) {
 		int len = nums.size();
 		int i = len - 1;
+		// 从右向左找nums[i - 1] < nums[i]的，也就是从右向左降序元素
 		while (i > 0 && nums[i - 1] >= nums[i]) {
 			i--;
 		}
 		int j = len - 1;
+		// 从右向左找大于nums[i - 1]的元素
 		while (j > 0 && nums[j] <= nums[i - 1]) {
 			j--;
 		}
+		// 交换找到的两个元素
 		swap(nums[i - 1], nums[j]);
+		// 再由一定位置翻转列表
 		reverse(nums.begin() + i, nums.end());
 		
 		/*for (auto& ele : nums) {
@@ -112,7 +117,7 @@ string compute(vector<vector<int> > permutation, vector<vector<char> > noteVecRe
 }
 
 string conclusion(string str) {
-	if (str.length() > 11) { // ���ַ����д��ڴ�С��
+	if (str.length() > 11) { // 若字符串中存在大小王
 		return "ERROR";
 	}
 	auto mapVec  = mapTrans();
