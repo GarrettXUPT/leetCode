@@ -7,6 +7,16 @@
 
 using namespace std;
 
+/*
+	24点：随意计入四张牌，并依照由左向右依次运算，使满足该规则时，总和达到24点
+	1、建立数字对应字符或者字符对应数字哈希表，再根据对应结构，构造出另一种转化的关系
+	2、将输入字符转化为数字，讲数字进行全排列
+	3、在排列之前，构造两数加减乘除运算的函数，再添加四种运算中拿出三种运算关系的函数
+	4、边排列边进行加减乘除运算，直到出现24点
+	5、若是全排列后，不出现，则说明这种组合没有出现24点的可能
+
+*/
+
 // 字符转数字
 map<int, char> mapTrans() {
 	map<int, char> numMap;
@@ -57,7 +67,7 @@ vector<vector<int> > permutation(vector<int> nums) {
 		}
 		// 交换找到的两个元素
 		swap(nums[i - 1], nums[j]);
-		// 再由一定位置翻转列表
+		// 再由i位置翻转列表
 		reverse(nums.begin() + i, nums.end());
 		
 		/*for (auto& ele : nums) {
@@ -124,7 +134,7 @@ string conclusion(string str) {
 	const char* ch = str.c_str();
 	vector<int> intVec;
 	while (*ch != '\0') {
-		if (*ch != ' ' && 48 <= *(ch + 1) && *(ch + 1) <= 57) {
+		if (*ch != ' ' && 48 <= *(ch + 1) && *(ch + 1) <= 57) {  // 主要是为了让10运算正常
 			intVec.push_back(charTransToInt(mapVec, *ch) * 10 + charTransToInt(mapVec, *(ch + 1)));
 			ch++;
 		}

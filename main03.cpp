@@ -4,6 +4,9 @@
 
 using namespace std;
 
+/*]
+	上升下降字符串
+*/
 
 char findBiger(vector<char>& chvec, char& ch2) {
 	auto begin = chvec.begin();
@@ -50,15 +53,15 @@ string sortString(string s) {
 	sort(chVec.begin(), chVec.end());
 	while (!chVec.empty())
 	{
-		auto minIter = min_element(chVec.begin(), chVec.end());
-		auto minPos = *minIter;
-		chVec.erase(minIter);
+		auto minIter = min_element(chVec.begin(), chVec.end());  // 获取最小的字符
+		auto minPos = *minIter;  // 记录最小的字符
+		chVec.erase(minIter);  // 将该字符从字符列表中去除
 
 		while (1) {
 			if (minPos != ' ') {
 				chArr[k] = minPos;
 				k++;
-				minPos = findBiger(chVec, minPos);
+				minPos = findBiger(chVec, minPos);  // 寻找比当前最小字符大一的字符
 			}
 			else {
 				break;
@@ -67,9 +70,9 @@ string sortString(string s) {
 		if (chVec.empty()) {
 			break;
 		}
-		auto maxIter = max_element(chVec.begin(), chVec.end());
-		auto maxPos = *maxIter;
-		chVec.erase(maxIter);
+		auto maxIter = max_element(chVec.begin(), chVec.end());  // 获取最大的字符
+		auto maxPos = *maxIter;  // 记录最大的字符
+		chVec.erase(maxIter);  // 将该字符从字符数组中去除
 		while (1) {
 			if (maxPos != ' ') {
 				chArr[k] = maxPos;

@@ -4,6 +4,10 @@
 
 using namespace std;
 
+/*
+	三数之和，在输入数组中找到三个数的和为0的全部组合
+*/
+
 vector<vector<int> > threeSum(vector<int>& nums) {
 	vector<vector<int> > resVec;
 	if (nums.size() < 3) {
@@ -19,7 +23,7 @@ vector<vector<int> > threeSum(vector<int>& nums) {
 		if (nums[i] > 0) {
 			return resVec;
 		}
-		// 出现重复解
+		// 会出现重复解
 		if (i > 0 && nums[i] == nums[i - 1]) {
 			continue;
 		}
