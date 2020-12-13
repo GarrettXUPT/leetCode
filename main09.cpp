@@ -4,6 +4,10 @@
 
 using namespace std;
 
+/*
+	全排列:基础技术，必须掌握
+*/
+
 vector<vector<int> > permute(vector<int>& nums) {
 	int len = nums.size();
 	if (len == 1) {

@@ -10,6 +10,10 @@ struct ListNode {
 	ListNode(int x, ListNode* next) : val(x), next(next) {};
 };
 
+/*
+    合并两个升序链表
+*/
+
 ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
     if (l1 == nullptr) {
         return l2;

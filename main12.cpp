@@ -3,14 +3,20 @@
 
 using namespace std;
 
+
+/*
+	加油站问题
+
+*/
+
 int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
 
 	for (int i = 0; i < gas.size(); ++i) {
 		int gasCount = gas[i];
-		int count = 0;
+		int count = 0;  // 定义停止条件
 		int j = i;
 		while (1) {
-			if (count == gas.size()) {
+			if (count == gas.size()) {  // 当遍历所有加油站时 进行返回
 				return i;
 			}
 			if (count > gas.size()) {

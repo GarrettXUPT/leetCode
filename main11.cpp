@@ -10,6 +10,10 @@ struct ListNode {
 	ListNode(int x, ListNode* next) : val(x), next(next) {};
 };
 
+/*
+	删除链表中倒数n个节点
+*/
+
 ListNode* removeNthFromEnd(ListNode* head, int n) {
 	if (n == 0) {
 		return head;
@@ -21,7 +25,7 @@ ListNode* removeNthFromEnd(ListNode* head, int n) {
 		pos = pos->next;
 	}
 	pos = head;
-	if (n == len) {
+	if (n == len) {  // 若倒数n个元素即为第一个元素，则直接去除第一个元素
 		head = pos->next;
 		return head;
 	}

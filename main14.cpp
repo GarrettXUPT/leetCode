@@ -12,6 +12,9 @@ struct ListNode {
 	ListNode(int x, ListNode* next) :val(x), next(next) {};
 };
 
+/*
+	合并K个有序链表
+*/
 ListNode* mergeKLists(vector<ListNode*>& lists) {
 	int len = lists.size();
 	if (len == 0) {

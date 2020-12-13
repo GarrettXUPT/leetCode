@@ -22,6 +22,7 @@ int removeElement(vector<int>& nums, int val) {
 	return nums.size();
 }
 
+
 int strStr(string haystack, string needle) {
 	int len = needle.length();
 	if (len == 0) {
