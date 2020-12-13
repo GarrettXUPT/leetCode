@@ -3,6 +3,11 @@
 
 using namespace std;
 
+/*
+	合并两个有序数组
+	将nums2合并到nums1数组中
+*/
+
 void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
 	if (nums2.empty()) {
 		return;
@@ -11,7 +16,7 @@ void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
 		nums1 = nums2;
 		return;
 	}
-	int dis = nums1.size() - m;
+	int dis = nums1.size() - m;  // 删除后面的占位元素0
 	for (int i = 0; i < dis; ++i) {
 		nums1.pop_back();
 	}
@@ -25,10 +30,12 @@ void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
 		}
 		begin1++;
 		count++;
+		// 当nums1已经全部遍历或者是整个合并过程已结束
 		if (begin1 == nums1.end() || begin2 == nums2.end()) {
 			break;
 		}
 	}
+	// 当nums2没有完全合并进去时
 	while (begin2 != nums2.end()) {
 		nums1.insert(begin1, *begin2);
 		begin1++; begin2++;

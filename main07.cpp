@@ -1,15 +1,17 @@
 #include<iostream>
+#include<cstdlib>
+
 
 using namespace std;
 
 int divide(int dividend, int divisor) {
 
      //老三样，处理特殊情况
-    if (divisor == -1) return dividend == INT_MIN ? INT_MAX : -dividend;
+    if (divisor == -1) return dividend == INT64_MIN ? INT64_MAX : -dividend;    // 除数为-1
     
-    if (divisor == 1) return dividend;
+    if (divisor == 1) return dividend;  // 除数为1
     
-    if (divisor == INT_MIN) return dividend == INT_MIN ? 1 : 0;
+    if (divisor == INT64_MIN) return dividend == INT64_MIN ? 1 : 0;  // 除数为最大值
 
     bool flag = true, d1Flag = false;       //flag用于标识结果的正负，d1Flag是被除数为INT_MIN的标识
     int res = 0;                           //运算结果；
@@ -18,7 +20,7 @@ int divide(int dividend, int divisor) {
         flag = false;                      //flag为false则结果为负
     }
 
-    if (dividend == INT_MIN) {
+    if (dividend == INT64_MIN) {
         dividend++;                        //这里被除数若等于INT_MIN，则先加一防止取绝对值后溢出
         d1Flag = true;                     //标识被除数为INT_MIN
     }
