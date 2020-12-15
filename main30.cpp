@@ -2,6 +2,10 @@
 
 using namespace std;
 
+/*
+    平方根运算
+*/
+
 int mySqrt(int x) {
     //注：在中间过程计算平方的时候可能出现溢出，所以用long long。
     long long i = 0;

@@ -5,6 +5,10 @@
 using namespace std;
 
 /*
+	拼接最大数
+*/
+
+/*
 	首先比较两个子序列的当前元素，如果两个当前元素不同，则选其中较大的元素作为下一个合并的元素，
 	否则需要比较后面的所有元素才能决定选哪个元素作为下一个合并的元素。
 */
@@ -18,7 +22,7 @@ int numsCompare(vector<int>& vec1, int index1, vector<int>& vec2, int index2) {
 		index1++;
 		index2++;
 	}
-	return (len1 - index1) - (len2 - index2);
+	return (len1 - index1) - (len2 - index2);  // nums1的长度大于nums2
 }
 
 vector<int> merge(vector<int>& vec1, vector<int>& vec2) {

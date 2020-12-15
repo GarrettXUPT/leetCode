@@ -1,7 +1,12 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 
 using namespace std;
+
+/*
+    最大扰动距离
+*/
 
 int wiggleMaxLength(vector<int>& nums) {
     int len = nums.size();

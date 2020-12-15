@@ -3,6 +3,10 @@
 
 using namespace std;
 
+/*
+	查找数组中目标元素第一个位置和最后一个位置
+*/
+
 vector<int> searchRange(vector<int>& nums, int target) {
 	int len = nums.size();
 	int i = 0;

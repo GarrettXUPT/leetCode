@@ -1,7 +1,13 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
+#include<cstdlib>
 
 using namespace std;
+
+/*
+	排列序列
+*/
 
 string getPermutation(int n, int k) {
 	char* chArr = (char*)malloc(sizeof(char) * n + 1);
