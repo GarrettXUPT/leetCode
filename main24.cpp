@@ -6,6 +6,10 @@ using namespace std;
 vector<int> t;
 vector<vector<int>> ans;
 
+/*
+    子集
+*/
+
 void dfs(int cur, vector<int>& nums) {
     if (cur == nums.size()) {
         ans.push_back(t);
@@ -24,5 +28,11 @@ vector<vector<int>> subsets(vector<int>& nums) {
 
 int main() {
     vector<int> vec{ 1,2,3 };
-    subsets(vec);
+    auto res = subsets(vec);
+    for(auto& ele : res){
+        for(auto& elem : ele){
+            cout << elem << " ";
+        }
+        cout << endl;
+    }
 }

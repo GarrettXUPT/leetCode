@@ -5,6 +5,12 @@
 
 using namespace std;
 
+/*
+	四数之和
+	四个向量中数的组合，最终结果为0
+	A[i] + B[j] + C[k] + D[n] = 0
+*/
+
 int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
 	int resCount = 0;
 	unordered_map<int, int>countAB; // 键为计算结果，值为该结果出现的次数

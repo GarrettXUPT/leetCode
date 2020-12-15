@@ -3,6 +3,10 @@
 
 using namespace std;
 
+/*
+	二叉树节点计数
+*/
+
 struct TreeNode {
 	int val;
 	TreeNode* left;

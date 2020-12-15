@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 
 using namespace std;
 
@@ -8,7 +9,7 @@ void nextPermutation(vector<int>& nums) {
 	if (len <= 1) {
 		return;
 	}
-	// 从后向前找,找到非降序的最后他一个元素
+	// 从后向前找,找到非降序的最后他一个元素 5
 	int i = len - 1;
 	while (i > 0 && nums[i - 1] >= nums[i]) {
 		i--;
@@ -18,7 +19,7 @@ void nextPermutation(vector<int>& nums) {
 		reverse(nums.begin(), nums.end());
 		return;
 	}
-	// 从后向前找，找到大于上步找到位置的元素
+	// 从后向前找，找到大于上步找到位置的元素 4
 	int j = len - 1;
 	while (j > 0 && nums[i - 1] >= nums[j]) {
 		j--;

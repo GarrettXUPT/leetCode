@@ -3,6 +3,10 @@
 
 using namespace std;
 
+/*
+    拆分为斐波那契数列
+*/
+
 vector<int> splitIntoFibonacci(string S) {
     vector<int> list;
     backtrack(list, S, S.length(), 0, 0, 0);
@@ -19,7 +23,7 @@ bool backtrack(vector<int>& list, string S, int length, int index, long long sum
             break;
         }
         curr = curr * 10 + S[i] - '0';  // 拆分出来当前的值
-        if (curr > INT_MAX) {  // 拆分出来的数大于int范围
+        if (curr > INT64_MAX) {  // 拆分出来的数大于int范围
             break;
         }
         if (list.size() >= 2) {  // 若列表中存在大于2个的元素
