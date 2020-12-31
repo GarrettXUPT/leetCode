@@ -5,6 +5,10 @@
 
 using namespace std;
 
+/*
+	最长公共前缀
+*/
+
 string longestcommPreix(vector<string>& strs) {
 	if (strs.empty()) {
 		return "";

@@ -3,6 +3,10 @@
 
 using namespace std;
 
+/*
+	搜索二维矩阵：判断矩阵中是否存在目标值
+*/
+
 bool searchMatrix(vector<vector<int>>& matrix, int target) {
 	if (matrix.size() == 0) {
 		return false;

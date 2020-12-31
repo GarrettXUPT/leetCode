@@ -3,6 +3,8 @@
 
 using namespace std;
 
+// 搜索元素所在位置
+
 int search(vector<int>& nums, int target) {
 	int len = nums.size();
 	int i = 0;

@@ -28,7 +28,6 @@ ListNode* sortList(ListNode* head) {
 	ListNode* newhead = new ListNode(vec[0], nullptr);
 	newhead->next = nullptr;
 	for (int i = 1; i < vec.size(); ++i) {
-		newhead->val = vec[i];
 		newhead->next = new ListNode(vec[i], nullptr);
 		newhead = newhead->next;
 	}

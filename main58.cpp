@@ -9,7 +9,7 @@ int distance(int dst, int src) {
 	return abs(dst - src);
 }
 
-
+// 三数之和为0，则将其记录
 int threeSum(vector<int>& nums, int target) {
 	if (nums.size() < 3) {
 		return EXIT_FAILURE;

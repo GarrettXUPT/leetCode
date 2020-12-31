@@ -7,6 +7,10 @@
 
 using namespace std;
 
+/*
+	单词拆分，要使用动态规划
+*/
+
 vector<int> _termLength(vector<string>& w1) {
 	int maxLen = 0;
 	int minLen = 9999;
@@ -37,6 +41,7 @@ bool subStrJudge(vector<string>& strVec, string str) {
 		}
 	}
 }
+
 
 bool wordBreak1(string s, vector<string>& wordDict) {
 	set<string> checkSet;
@@ -70,6 +75,11 @@ bool wordBreak1(string s, vector<string>& wordDict) {
 	return false;
 }
 
+
+/*
+	动态规划解决单词拆分问题
+*/
+
 bool wordBreak(string s, vector<string>& wordDict) {
 	auto wordDictSet = unordered_set <string>();
 	for (auto word : wordDict) {
@@ -77,6 +87,8 @@ bool wordBreak(string s, vector<string>& wordDict) {
 	}
 	auto dp = vector <bool>(s.size() + 1);
 	dp[0] = true;  // 空串即为真
+	//  需要枚举s[0...i - 1]中分割点s[0,...j - 1]组成的字符串s1与s[j,...i]组成的字符串s2是否合法，若是两个都合法，那么两者拼接起来的字符串也是合法的
+	// 	我们已经得到dp[0，... i - 1]的值，所以s1是否合法判断dp[j]就可以，只需要看s2是否合法即可
 	for (int i = 1; i <= s.size(); ++i) {
 		for (int j = 0; j < i; ++j) {
 			if (dp[j] && wordDictSet.find(s.substr(j, i - j)) != wordDictSet.end()) {

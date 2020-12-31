@@ -5,6 +5,10 @@
 
 using namespace std;
 
+/*
+	合并区间
+*/
+
 vector<vector<int>> merge(vector<vector<int>>& intervals, vector<int>& newIntreval) {
 	intervals.push_back(newIntreval);
 	int len = intervals.size();
@@ -14,6 +18,7 @@ vector<vector<int>> merge(vector<vector<int>>& intervals, vector<int>& newIntrev
 	else if (len == 0) {
 		return {};
 	}
+	// 以左限进行排序
 	sort(intervals.begin(), intervals.end(), [](vector<int>& v1, vector<int>& v2) {
 		return v1[0] < v2[0];
 		});
@@ -21,13 +26,14 @@ vector<vector<int>> merge(vector<vector<int>>& intervals, vector<int>& newIntrev
 	set<int> check;
 	for (int i = 0; i < len - 1; ++i) {
 		for (int j = i + 1; j < len; ++j) {
+			// 比较前右限和后左限的大小关系，若是是包含关系则对区间进行合并，对需要删除的区间进行记录
 			if (intervals[i][1] >= intervals[j][0]) {
 				intervals[i][1] = intervals[j][1] > intervals[i][1] ? intervals[j][1] : intervals[i][1];
 				check.insert(j);
 			}
 		}
 	}
-
+	// 删除上一步记录下来的区间
 	auto begin = check.begin();
 	int n = check.size();
 	int i = 0;

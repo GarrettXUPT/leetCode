@@ -3,6 +3,7 @@
 using namespace std;
 
 
+// 最长的子串长度
 int lengthOfLongestSubstring(const char* s) {
     int i = 0;  // 计数器
     int count = 0;  // 子串当前长度
@@ -20,7 +21,7 @@ int lengthOfLongestSubstring(const char* s) {
                 max = count;
             }
             start = index[s[i]];  // 更新子串的起始位置
-        }
+        }                    
         index[s[i]] = i + 1;
     }
     count = i - start;

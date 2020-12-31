@@ -17,12 +17,12 @@ int monotoneIncreasingDigits(int N) {
     }
     // 若原数字中并不是递增的
     if (i < strN.length()) {
-        // 从后往前数，递减的序列减一
+        // 从后往前数，递减的序列减一，直到找到递减以后不破坏由前向后递增关系的数字
         while (i > 0 && strN[i - 1] > strN[i]) {
             strN[i - 1] -= 1;
             i -= 1;
         }
-        // 出去前面递减的序列，其他位置皆为9
+        // 由上一轮找到的数字以后，全部填为9
         for (i += 1; i < strN.length(); ++i) {
             strN[i] = '9';
         }

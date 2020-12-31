@@ -7,6 +7,10 @@
 
 using namespace std;
 
+/*
+    罗马与整形之间的互换    
+*/
+
 string intToRoman(int x) {
     if (x < 1 || x >3999) return "";
     int values[] = { 1000,900,500,400,100,90,50,40,10,9,5,4,1 };

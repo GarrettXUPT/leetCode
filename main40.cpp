@@ -1,9 +1,13 @@
 #include<iostream>
 #include<vector>
 #include<map>
+#include <algorithm>
 
 using namespace std;
 
+/*
+	只出现一次的数字
+*/
 int singleNumber(vector<int>& nums) {
 	int len = nums.size();
 	
@@ -15,6 +19,10 @@ int singleNumber(vector<int>& nums) {
 	return -1;
 }
 
+/*
+	遇到该种问题，应该可以考虑到使用哈希表来提高效率
+	若是可以使用库函数的就一定要使用库函数，因为那些函数都是经过优化的
+*/
 int singleNumber1(vector<int>& nums) {
 	int len = nums.size();
 	map<int, int> check;
