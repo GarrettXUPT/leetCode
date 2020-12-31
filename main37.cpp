@@ -11,7 +11,7 @@ using namespace std;
 int monotoneIncreasingDigits(int N) {
     string strN = to_string(N);
     int i = 1;
-    // 直接使用前项递增的数字
+    // 直接使用前项递增的数字,验证原数字是否位递增
     while (i < strN.length() && strN[i - 1] <= strN[i]) {
         i += 1;
     }
