@@ -6,12 +6,17 @@
 using namespace std;
 
 /*
-	合并区间
+	插入区间
+	给出一个五无重叠的，按照区间其实端点排序的区间列表
+	在列表中插入一个新的区间，确保列表之间仍然有序但是又不互相重叠(可以允许进行区间合并)
 */
 
 vector<vector<int>> merge(vector<vector<int>>& intervals, vector<int>& newIntreval) {
 	intervals.push_back(newIntreval);
 	int len = intervals.size();
+	/*
+		特殊情况的判定
+	*/
 	if (len == 1) {
 		return intervals;
 	}
