@@ -6,6 +6,12 @@
 using namespace std;
 
 /*
+	除法求值：
+	给定一个变量数组equation和实数值数组value作为已知条件
+	其中equations[i] = [Ai, bi] 及values[i]，每个Ai和Bi都是一个表示单变量的字符串
+*/
+
+/*
 	广度优先搜索
 	1、将该问题建模为一张图，给定图中的一些点(变量)，以及某些边的权值(两个变量的比例)，试图对任意两点求其路径长
 	2、遍历等式数组，找出所有不同的字符串，并通过哈希表将每个不同的字符串映射为整数
@@ -17,6 +23,7 @@ vector<double> calcuEquation(vector<vector<string>>& equations, vector<double>& 
 	unordered_map<string, int> variables;
 
 	int n = equations.size();
+	// 将等式中的变量的个数进行记录及本身进行记录
 	for (int i = 0; i < n; ++i) {
 		if (variables.find(equations[i][0]) == variables.end()) {
 			variables[equations[i][0]] = nvars++;
@@ -37,6 +44,7 @@ vector<double> calcuEquation(vector<vector<string>>& equations, vector<double>& 
 	vector<double> ret;
 	for (const auto& ele : queries) {
 		double result = -1;
+		// 问题数组中两个变量在已存的变量中存在，若是不存在，则返回值就是-1
 		if (variables.find(ele[0]) != variables.end() && variables.find(ele[1]) != variables.end()) {
 			int ia = variables[ele[0]], ib = variables[ele[1]];
 			if (ia == ib) {

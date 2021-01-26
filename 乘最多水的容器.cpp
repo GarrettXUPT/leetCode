@@ -14,9 +14,12 @@ int maxArea(vector<int>& height) {
 	auto rbegin = height.end() - 1;
 	int len = height.size() - 1;
 	vector<int> resVec;
+	/*
+		此处要注意的是，这个迭代器也是有类型的，所以不同类型之间时不好作比较的
+	*/
 	while (begin != rbegin) {
 		int hg = min(*begin, *rbegin);
-		resVec.push_back(len * hg);
+		resVec.push_back(len * hg);  // 记录当前的容量
 		if (hg == *begin) {
 			begin++;
 		}
@@ -25,7 +28,7 @@ int maxArea(vector<int>& height) {
 		}
 		len--;
 	}
-	return *max_element(resVec.begin(), resVec.end());
+	return *max_element(resVec.begin(), resVec.end());  // 选择最大的容量
 }
 
 int main() {
