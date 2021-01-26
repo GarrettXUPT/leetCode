@@ -4,6 +4,13 @@
 
 using namespace std;
 
+/*
+	比较版本号xxx.xxx.xxx的大小
+*/
+
+/*
+	字符串之间的比较，就是比较两段版本号的有效部分的大小，此处是去掉那些前导0的时候
+*/
 int strCompare(string s1, string s2) {
 	if (s1.length() > s2.length()) {
 		return 1;
@@ -33,18 +40,25 @@ int compareVersion(string version1, string version2) {
 	vector<string> strVec1;
 	vector<string> strVec2;
 	while (begin1 != version1.end()) {
+		/*
+			若是没有到版本分界，将该段的版本号进行记录
+		*/
 		if (*begin1 != '.') {
 			tmpStr += *begin1;
 		}
+		/*
+			若已经到版本号分界
+		*/
 		if (*begin1 == '.') {
 			bool flag = false;
 			string str = "";
+			// 若是该段版本号都是0
 			if (count(tmpStr.begin(), tmpStr.end(), '0') == tmpStr.size()) {
 				strVec1.push_back("0");
 			}
-			else {
+			else { 
 				for (int i = 0; i < tmpStr.size(); ++i) {
-					if (tmpStr[i] > '0') {
+					if (tmpStr[i] > '0') { // 循环记录版本号中无前导0的部分，即去掉无关于该段版本号大小的部分
 						flag = true;
 						str += tmpStr[i];
 					}
@@ -52,15 +66,19 @@ int compareVersion(string version1, string version2) {
 						str += tmpStr[i];
 					}
 				}
+				// 将该段版本号进行记录
 				strVec1.push_back(str);
 			}
 			tmpStr = "";
 		}
 		begin1++;
 	}
+	// 若存在最后一部分，那么也要记录下来
 	if (!tmpStr.empty()) {
 		strVec1.push_back(tmpStr);
 	}
+
+	// 对版本号2做同样的处理
 	tmpStr = "";
 	while (begin2 != version2.end()) {
 		if (*begin2 != '.') {
@@ -92,6 +110,7 @@ int compareVersion(string version1, string version2) {
 		strVec2.push_back(tmpStr);
 	}
 	
+	// 比较两个版本号的有效部分
 	auto vec1Begin = strVec1.begin();
 	auto vec2Begin = strVec2.begin();
 
@@ -104,6 +123,9 @@ int compareVersion(string version1, string version2) {
 		}
 		vec1Begin++; vec2Begin++;
 	}
+	/*
+		该段是在判断两个中比较长的一段，判断多出来的一段是否都是0，是否与短的其实相等
+	*/
 	if (vec1Begin != strVec1.end()) {
 		if (count(vec1Begin, strVec1.end(), "0") != (strVec1.end() - vec1Begin)) {
 			return 1;
