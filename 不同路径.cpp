@@ -3,6 +3,14 @@
 
 using namespace std;
 
+/*
+    一个机器人位于m x n网格左上角
+    机器人，每次只能向下或者向右移动一步，机器人试图到达右下角
+    问总共有多少条不同的路径
+
+    动态规划
+*/
+
 int uniquePaths(int m, int n) {
     //动态创建一个二维路径答案表
     int** dp = (int**)malloc(sizeof(int*) * n);
@@ -16,6 +24,7 @@ int uniquePaths(int m, int n) {
                 dp[i][j] = 1;
             }
             else {
+                // 向右或者是向下都可以到达目标点
                 dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
             }
         }
