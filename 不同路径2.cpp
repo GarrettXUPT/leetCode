@@ -25,7 +25,7 @@ int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
 }
 
 /*
-    此时网格中有障碍物
+    此时网格中有障碍物，实用动态规划
 */
 int uniquePathsWithObstacles(vector<vector<int>> obstacleGrid) {
     if (obstacleGrid.size() == 0) {
